@@ -1,0 +1,21 @@
+{
+    "name": "explore/explore",
+    "description": "the explorePHP",
+    "type": "object",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "yilian lin",
+            "email": "873026940@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        }
+    }
+}

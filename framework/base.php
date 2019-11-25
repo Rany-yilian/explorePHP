@@ -20,3 +20,4 @@ define("LIB_ROOT",FRAME_ROOT."/library");
 define("CORE_ROOT",FRAME_ROOT."/core");
 //后缀
 define("EXT",".php");
+

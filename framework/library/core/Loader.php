@@ -11,10 +11,10 @@ class Loader
 
     public static function autoload($className)
     {
-        $coreName = basename(CORE_ROOT);
+        $coreName  = basename(CORE_ROOT);
         $className = str_replace("{$coreName}\\", "", $className);
-        $fileName = self::_getFile($className);
-        $fileName = self::_parseDir($fileName);
+        $fileName  = self::_getFile($className);
+        $fileName  = self::_parseDir($fileName);
         if (is_file($fileName)) {
             require $fileName;
         } else {

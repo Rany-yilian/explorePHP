@@ -17,7 +17,11 @@ define("FUNCTION_ROOT",FRAME_ROOT."/common");
 //系统库文件目录
 define("LIB_ROOT",FRAME_ROOT."/library");
 //核心文件目录
-define("CORE_ROOT",FRAME_ROOT."/core");
+define("CORE_ROOT",LIB_ROOT."/core");
 //后缀
 define("EXT",".php");
 
+include CORE_ROOT."/Loader.php";
+
+
+echo "<pre>";print_r($_SERVER);die;

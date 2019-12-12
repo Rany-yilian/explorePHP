@@ -9,7 +9,7 @@ namespace core;
 
 class Request
 {
-    private static $_instance = NULL;
+    private static $_instance = null;
 
     private function __construct()
     {

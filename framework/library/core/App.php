@@ -8,7 +8,7 @@ namespace core;
 
 class App{
 
-    private static $_instance = NULL;
+    private static $_instance = null;
 
     private function __construct()
     {
@@ -23,6 +23,10 @@ class App{
     }
 
     public function run(){
-        $uri = Request::getInstance()->isCli();
+        $this->initialize();
+    }
+
+    public function initialize(){
+        $this->config = Config::getInstance();
     }
 }

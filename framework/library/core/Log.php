@@ -10,7 +10,7 @@ namespace core;
 class Log
 {
 
-    private static $stance = NULL;
+    private static $stance = null;
 
     static public function getInstance()
     {

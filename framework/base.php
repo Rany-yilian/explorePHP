@@ -28,4 +28,8 @@ include CORE_ROOT."/Loader.php";
 \core\exception\Error::register();
 
 \core\App::getInstance()->run();
-echo "<pre>";print_r($_SERVER);die;
+
+echo "<pre>";
+print_r(\core\Config::getInstance()->get('database.mysql.type'));
+print_r(\core\Config::getInstance()->getModule());
+die;

@@ -6,6 +6,8 @@
  */
 namespace core;
 
+use core\dao\DAO;
+
 class File{
 
     public static function upload(){

@@ -6,10 +6,10 @@ define("VERSION","1.0.0");
 define("ROOT",dirname(__DIR__));
 //应用文件存放目录
 define("APP_ROOT",ROOT."/app");
-//缓存目录
-define("CACHE_ROOT",ROOT."/cache");
 //框架目录
 define("FRAME_ROOT",ROOT."/framework");
+//缓存目录
+define("CACHE_ROOT",FRAME_ROOT."/cache");
 //配置文件目录
 define("CONFIG_ROOT",FRAME_ROOT."/config");
 //公共方法目录
@@ -22,6 +22,13 @@ define("CORE_ROOT",LIB_ROOT."/core");
 define("EXT",".php");
 
 include CORE_ROOT."/Loader.php";
+
+\core\Loader::register();
+
+\core\exception\Error::register();
+
+    //$num = 1/0;
+
 
 
 echo "<pre>";print_r($_SERVER);die;

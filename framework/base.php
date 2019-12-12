@@ -27,8 +27,5 @@ include CORE_ROOT."/Loader.php";
 
 \core\exception\Error::register();
 
-    //$num = 1/0;
-
-
-
+\core\App::getInstance()->run();
 echo "<pre>";print_r($_SERVER);die;

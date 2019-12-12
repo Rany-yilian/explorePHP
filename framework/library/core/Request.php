@@ -124,6 +124,16 @@ class Request
         return filter_var($ip, FILTER_VALIDATE_IP) ? $ip : '';
     }
 
+    public function uri()
+    {
+        $uri = $_SERVER['REQUEST_URI'];
+        $index = strpos($uri, '?');
+        if ($index) {
+            return substr($uri, 0, $index);
+        }
+        return $uri;
+    }
+
     public static function method()
     {
         if ($_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE']) {

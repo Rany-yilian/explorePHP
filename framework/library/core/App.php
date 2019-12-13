@@ -47,12 +47,6 @@ class App
 
     private function bootstrap($driver)
     {
-        if (method_exists($driver, 'before')) {
-            $driver->before();
-        }
-        if (method_exists($driver, 'init')) {
-            $driver->init();
-        }
         if (method_exists($driver, 'after')) {
             $driver->after();
         }

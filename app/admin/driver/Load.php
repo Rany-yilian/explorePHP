@@ -16,14 +16,17 @@ class Load extends Driver
         parent::__construct();
     }
 
-    public function init()
-    {
-        echo "init";
-    }
-
+    /**
+     * 执行顺序  before => init => constroller =>after
+     */
     public function before()
     {
         echo "before";
+    }
+
+    public function init()
+    {
+        echo "init";
     }
 
     public function after()

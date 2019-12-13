@@ -6,14 +6,13 @@
 
 namespace core;
 
-class Driver
+interface Driver
 {
-    protected $config;
 
-    public function __construct(Config $config)
-    {
-        $this->config = $config::getInstance();
-    }
+    public function init();
 
+    public function before();
+
+    public function after();
 
 }

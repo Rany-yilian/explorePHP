@@ -7,7 +7,9 @@
 
 namespace app\admin;
 
-class Load
+use core\Driver;
+
+class Load implements Driver
 {
     public function __construct()
     {

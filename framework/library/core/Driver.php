@@ -6,6 +6,7 @@
 
 namespace core;
 
+use core\exception\ExtendException;
 use core\exception\NotFoundException;
 
 class Driver implements Init
@@ -41,6 +42,9 @@ class Driver implements Init
         $func = $this->__request->func();
         $class = $modulePath.'/'.ucfirst($controller).'Controller';
         $class = str_replace('/','\\',$class);
+        if(!is_subclass_of($class,Controller::class)){
+            throw new ExtendException('your '.$class.' is not extend Controller');
+        }
         if(!class_exists($class)){
             throw new NotFoundException('controller:'.$controller.' is not existed');
         }

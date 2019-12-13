@@ -6,7 +6,7 @@
  */
 namespace app\admin;
 
-class Index{
+class IndexController{
     public function index(){
         echo "helle index";
     }

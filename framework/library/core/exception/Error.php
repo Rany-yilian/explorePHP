@@ -20,7 +20,7 @@ class Error
     {
         $errorExp = new ErrorException($errno, $errstr, $errfile, $errline);
         if (error_reporting() & $errno) {
-            throw $errorExp;
+            //throw $errorExp;
         }
         Solve::getInstance()->record($errorExp);
     }

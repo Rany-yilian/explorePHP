@@ -9,5 +9,20 @@ namespace app\admin;
 
 class Load
 {
+    public function __construct()
+    {
 
+    }
+
+    public function init(){
+        echo "init";
+    }
+
+    public function before(){
+        echo "before";
+    }
+
+    public function after(){
+        echo "after";
+    }
 }

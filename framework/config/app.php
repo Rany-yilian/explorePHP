@@ -6,5 +6,6 @@
  */
 
 return [
-    'debug' => 'true'
+    'debug' => 'true',
+    'namespace' => 'app',
 ];

@@ -11,9 +11,20 @@ class Request
 {
     private static $_instance = null;
 
+    private $controllerPath = null;
+
+    private $controller = null;
+
+    private $modulePath = null;
+
+    private $module = null;
+
+    private $app = null;
+
     private function __construct()
     {
-
+        $this->app = Config::getInstance()->get('app.namespace');
+        $this->initPath();
     }
 
     static public function getInstance()
@@ -143,4 +154,47 @@ class Request
         }
         return 'GET';
     }
+
+    public function modulePath()
+    {
+        return $this->modulePath;
+    }
+
+    public function controllerPath()
+    {
+        return $this->controllerPath;
+    }
+
+    public function module()
+    {
+        return $this->module();
+    }
+
+    public function controller()
+    {
+        return $this->controller;
+    }
+
+    public function driver(){
+        return $this->driver;
+    }
+
+    public function driverPath(){
+        return $this->driverPath;
+    }
+
+    private function initPath()
+    {
+        $uri = ltrim($this->uri(), '/');
+        $uriArr = explode('/', $uri);
+        $this->module = array_shift($uriArr) ?? Config::getInstance()->get('module.default_module');
+        $this->modulePath = $this->app . '/' . $this->module;
+        $this->controller = array_shift($uriArr) ?? Config::getInstance()->get('module.default_controller');
+        $this->controllerPath = $this->modulePath . '/' . $this->controller;
+        $this->func = array_shift($uriArr) ?? Config::getInstance()->get('module.default_func');
+        $this->driver = array_shift($uriArr) ?? Config::getInstance()->get('module.driver');
+        $this->driverPath = $this->modulePath;
+    }
+
+
 }

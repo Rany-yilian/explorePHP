@@ -6,6 +6,8 @@
  */
 namespace core;
 
+use app\admin\Load;
+
 class App{
 
     private static $_instance = null;
@@ -28,11 +30,13 @@ class App{
 
     public function initialize(){
         $this->config = Config::getInstance();
-        $uri = Request::getInstance()->uri();
-        $uri = str_replace('/','\\',$uri);
-        $className = "\app\admin\Index";
-        include_once APP_ROOT.'/admin/controller/Index.php';
-       // var_dump($className);die;
-       var_dump(class_exists($className));die;
+        $driverPath = Request::getInstance()->driverPath();
+        $driverClass = str_replace('/','\\',$driverPath).'\\Load';
+        if(class_exists($driverClass)){
+            $driver = new $driverClass();
+            $driver->before();
+            $driver->init();
+            $driver->after();
+        }
     }
 }

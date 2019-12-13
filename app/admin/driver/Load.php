@@ -9,22 +9,25 @@ namespace app\admin;
 
 use core\Driver;
 
-class Load implements Driver
+class Load extends Driver
 {
     public function __construct()
     {
-
+        parent::__construct();
     }
 
-    public function init(){
+    public function init()
+    {
         echo "init";
     }
 
-    public function before(){
+    public function before()
+    {
         echo "before";
     }
 
-    public function after(){
+    public function after()
+    {
         echo "after";
     }
 }

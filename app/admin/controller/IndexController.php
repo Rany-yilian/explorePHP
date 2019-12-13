@@ -6,8 +6,11 @@
  */
 namespace app\admin;
 
+use core\Request;
+
 class IndexController{
     public function index(){
+        $param = Request::getInstance()->get();
         echo "helle index";
     }
 }

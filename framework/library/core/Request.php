@@ -21,6 +21,8 @@ class Request
 
     private $app = null;
 
+    private $func = null;
+
     private function __construct()
     {
         $this->app = Config::getInstance()->get('app.namespace');
@@ -167,7 +169,7 @@ class Request
 
     public function module()
     {
-        return $this->module();
+        return $this->module;
     }
 
     public function controller()
@@ -175,12 +177,24 @@ class Request
         return $this->controller;
     }
 
-    public function driver(){
+    public function driver()
+    {
         return $this->driver;
     }
 
-    public function driverPath(){
+    public function driverPath()
+    {
         return $this->driverPath;
+    }
+
+    public function func()
+    {
+        return $this->func;
+    }
+
+    public function app()
+    {
+        return $this->app;
     }
 
     private function initPath()

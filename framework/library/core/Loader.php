@@ -49,21 +49,22 @@ class Loader
         $view = Config::getInstance()->get('module.view');
         $arr[] = APP_ROOT;
         $arr[] = $module;
+        $class = ucfirst($class);
         if (strpos($className, ucfirst($constro)) !== false) {
             $arr[] = $constro;
-            $arr[] = $class . ucfirst($constro) . EXT;
+            $arr[] = str_replace($constro,'',$class) . ucfirst($constro) . EXT;
         } elseif (strpos($className, ucfirst($mdl)) !== false) {
             $arr[] = $mdl;
-            $arr[] = $class . ucfirst($mdl) . EXT;
+            $arr[] = str_replace($mdl,'',$class) . ucfirst($mdl) . EXT;
         } elseif (strpos($className, ucfirst($trait)) !== false) {
             $arr[] = $trait;
-            $arr[] = $class . ucfirst($trait) . EXT;
+            $arr[] = str_replace($trait,'',$class) . ucfirst($trait) . EXT;
         } elseif (strpos($className, ucfirst($view)) !== false) {
             $arr[] = $view;
-            $arr[] = $class . ucfirst($view) . EXT;
+            $arr[] = str_replace($view,'',$class) . ucfirst($view) . EXT;
         } else {
             $arr[] = $driver;
-            $arr[] = ucfirst($class) . EXT;
+            $arr[] = $class . EXT;
         }
         $fileName = implode('/', $arr);
         return $fileName;

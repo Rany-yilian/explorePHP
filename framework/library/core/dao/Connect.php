@@ -16,9 +16,9 @@ class Connect
 
     private $_host = null;
 
-    private $_username = null;
+    private $_user = null;
 
-    private $_pass = null;
+    private $_pwd = null;
 
     private $_config = null;
 
@@ -26,21 +26,46 @@ class Connect
 
     private $_link = null;
 
+    private $_options = [];
+
     private function __construct()
     {
         $this->_config = Config::getInstance();
-        $this->_link = 111;
+        $this->_init();
+        $this->_link = $this->_link();
     }
 
-    static public function getInstance($name, $bool = false)
+    private function _init()
     {
+        $this->_db = $this->_config->get('database.mysql.db');
+        $this->_host = $this->_config->get('database.mysql.host');
+        $this->_user = $this->_config->get('database.mysql.user');
+        $this->_pwd = $this->_config->get('database.mysql.pwd');
+        $this->_options = [
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_STRINGIFY_FETCHES => false,
+            \PDO::ATTR_EMULATE_PREPARES => false
+        ];
+    }
+
+    private function _link()
+    {
+        $dsn = 'mysql:dbname=' . $this->_db . ';host=' . $this->_host;
+        $dbh = new \PDO($dsn, $this->_user, $this->_pwd, $this->_options);
+        $this->_link = $dbh->prepare('select * from users');
+    }
+
+    public static function getInstance($name, $bool = false)
+    {
+        $encryptName = $name;
         if ($bool) {
-            $name = md5(serialize($name));
+            $encryptName = md5(serialize($name));
         }
-        if (!self::$_instance) {
-            self::$_instance = new self($name);
+        if (!isset(self::$_instance[$encryptName])) {
+            self::$_instance[$encryptName] = new self($name);
         }
-        return self::$_instance;
+        return self::$_instance[$encryptName];
     }
 
     public function link()

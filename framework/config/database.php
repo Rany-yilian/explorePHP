@@ -10,8 +10,8 @@ return [
             'type' => 'mysql',
             'user' => 'root',
             'pwd' => '123abc',
-            'host' => '127.0.0.1',
+            'host' => '192.168.92.132',
             'port' => '3306',
-            'db' => 'kefu_base'
+            'db' => 'new_im'
         ]
 ];

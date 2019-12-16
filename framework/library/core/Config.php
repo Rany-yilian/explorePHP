@@ -59,7 +59,9 @@ class Config
 
     public function get($name = '')
     {
-        self::_loadData($name);
+        if(!isset(self::$module[$name])){
+            self::_loadData($name);
+        }
         return self::$module[$name];
     }
 

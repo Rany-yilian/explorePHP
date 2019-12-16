@@ -4,14 +4,17 @@
  * Date: 2019/11/22
  * Time: 17:19
  */
+
 namespace app\admin;
 
 use core\Controller;
 use core\Request;
 
-class IndexController extends Controller {
+class IndexController extends Controller
+{
 
-    public function filter(){
+    public function filter()
+    {
 
     }
 
@@ -20,12 +23,15 @@ class IndexController extends Controller {
         echo "controller construct";
     }
 
-    public function login(){
-        echo "login";die;
+    public function login()
+    {
+        echo "login";
+        die;
     }
 
-    public function index(){
+    public function index()
+    {
         $param = Request::getInstance()->get();
-        echo "helle index";
+        IndexMdl::create(['data' => 1]);
     }
 }

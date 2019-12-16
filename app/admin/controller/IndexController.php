@@ -10,6 +10,20 @@ use core\Controller;
 use core\Request;
 
 class IndexController extends Controller {
+
+    public function filter(){
+
+    }
+
+    public function __construct()
+    {
+        echo "controller construct";
+    }
+
+    public function login(){
+        echo "login";die;
+    }
+
     public function index(){
         $param = Request::getInstance()->get();
         echo "helle index";

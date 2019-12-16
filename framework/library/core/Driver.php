@@ -22,18 +22,6 @@ class Driver implements Init
         $this->boostrap();
     }
 
-    public function init()
-    {
-    }
-
-    public function before()
-    {
-    }
-
-    public function after()
-    {
-    }
-
     private function boostrap()
     {
         $controller = $this->__request->controller();
@@ -52,5 +40,17 @@ class Driver implements Init
             throw new NotFoundException('controller:' . $controller . ',method:' . $func . ' is not existed');
         }
         $controllerClass->$func();
+    }
+
+    public function init()
+    {
+    }
+
+    public function before()
+    {
+    }
+
+    public function after()
+    {
     }
 }

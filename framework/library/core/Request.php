@@ -201,12 +201,12 @@ class Request
     {
         $uri = ltrim($this->uri(), '/');
         $uriArr = explode('/', $uri);
-        $this->module = array_shift($uriArr) ?? Config::getInstance()->get('module.default_module');
+        $this->module = array_shift($uriArr) ?: Config::getInstance()->get('module.default_module');
         $this->modulePath = $this->app . '/' . $this->module;
-        $this->controller = array_shift($uriArr) ?? Config::getInstance()->get('module.default_controller');
+        $this->controller = array_shift($uriArr) ?: Config::getInstance()->get('module.default_controller');
         $this->controllerPath = $this->modulePath . '/' . $this->controller;
-        $this->func = array_shift($uriArr) ?? Config::getInstance()->get('module.default_func');
-        $this->driver = array_shift($uriArr) ?? Config::getInstance()->get('module.driver');
+        $this->func = array_shift($uriArr) ?: Config::getInstance()->get('module.default_func');
+        $this->driver = array_shift($uriArr) ?: Config::getInstance()->get('module.driver');
         $this->driverPath = $this->modulePath;
     }
 

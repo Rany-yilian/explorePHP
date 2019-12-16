@@ -11,8 +11,6 @@ use core\Config;
 
 class Dao
 {
-    private static $_stance = [];
-
     public static function getLink()
     {
         return Connect::getInstance(Config::getInstance()->get('database.mysql.db'))->link();

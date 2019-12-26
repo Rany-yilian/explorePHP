@@ -32,7 +32,7 @@ class Connect
     {
         $this->_config = Config::getInstance();
         $this->_init();
-        $this->_link = $this->_link();
+        $this->_link();
     }
 
     private function _init()
@@ -52,8 +52,7 @@ class Connect
     private function _link()
     {
         $dsn = 'mysql:dbname=' . $this->_db . ';host=' . $this->_host;
-        $dbh = new \PDO($dsn, $this->_user, $this->_pwd, $this->_options);
-        $this->_link = $dbh->prepare('select * from users');
+        $this->_link = new \PDO($dsn, $this->_user, $this->_pwd, $this->_options);
     }
 
     public static function getInstance($name, $bool = false)

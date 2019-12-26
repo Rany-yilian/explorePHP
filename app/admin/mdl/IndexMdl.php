@@ -12,7 +12,12 @@ use core\Model;
 class IndexMdl extends Model
 {
 
-    public static $__table = 'groups';
+    public static $__table = 'config';
+
+    public static function select($where = [], $column = [], $order = '', $start = '', $length = '')
+    {
+        return parent::select($where, $column, $order, $start, $length);
+    }
 
     public static function create($data = [])
     {

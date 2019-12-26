@@ -32,6 +32,7 @@ class IndexController extends Controller
     public function index()
     {
         $param = Request::getInstance()->get();
-        IndexMdl::create(['data' => 1]);
+        $res = IndexMdl::update(['id=? AND value=?', [33, 86]], ['status' => 8, 'config_key' => 9999]);
+        IndexMdl::create(['config_key' => 18859655555, 'value' => '86', 'status' => '']);
     }
 }

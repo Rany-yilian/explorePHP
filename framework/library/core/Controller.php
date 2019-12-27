@@ -9,6 +9,8 @@ namespace core;
 
 class Controller
 {
+    private $_var = [];
+
     public function __construct()
     {
 
@@ -17,5 +19,15 @@ class Controller
     protected function __filter()
     {
 
+    }
+
+    public function assign($name, $val)
+    {
+        $this->_var[$name] = $val;
+    }
+
+    public function display($fileName = '')
+    {
+        Template::getInstance()->load($this->_var, $fileName);
     }
 }

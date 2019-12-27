@@ -12,7 +12,7 @@ use core\Request;
 
 class IndexController extends Controller
 {
-
+    use IndexTrait;
     public function filter()
     {
 
@@ -32,6 +32,7 @@ class IndexController extends Controller
     public function index()
     {
         $param = Request::getInstance()->get();
+        $this->fu();
         // 使用示例
          //$res = IndexMdl::delete(['id=?',[34]]);
         //$res = IndexMdl::update(['id=?', [34]], ['status' => 8, 'config_key' => 9999]);

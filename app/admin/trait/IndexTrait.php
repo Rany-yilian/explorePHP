@@ -6,8 +6,8 @@
  */
 namespace app\admin;
 
-class IndexTrait{
-    public function index(){
+trait IndexTrait{
+    public function fu(){
         echo "helle index";
     }
 }

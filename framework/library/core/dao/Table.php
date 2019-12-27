@@ -48,9 +48,9 @@ class Table
         return $res ?: [];
     }
 
-    public function getOne($where = [], $field = [], $order = '', $start = '', $length = '')
+    public function getOne($where = [], $field = [])
     {
-        $res = $this->_select($where, $field, $order, $start, $length);
+        $res = $this->_select($where, $field);
         return $res[0] ?: [];
     }
 

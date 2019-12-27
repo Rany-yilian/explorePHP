@@ -30,9 +30,9 @@ class Model
         return self::getDao()->select($where, $column, $order, $start, $length);
     }
 
-    public static function getOne($where = [], $column = [], $order = '', $start = 0, $length = 0)
+    public static function getOne($where = [], $column = [])
     {
-        return self::getDao()->getOne($where, $column, $order, $start, $length);
+        return self::getDao()->getOne($where, $column);
     }
 
     public static function update($where = [], $data)

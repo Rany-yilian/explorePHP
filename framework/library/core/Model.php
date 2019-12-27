@@ -25,6 +25,11 @@ class Model
         return self::getDao()->create($data);
     }
 
+    public static function delete($where = [])
+    {
+        return self::getDao()->delete($where);
+    }
+
     public static function select($where = [], $column = [], $order = '', $start = 0, $length = 0)
     {
         return self::getDao()->select($where, $column, $order, $start, $length);

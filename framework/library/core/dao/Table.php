@@ -48,6 +48,12 @@ class Table
         return $res ?: [];
     }
 
+    public function delete($where)
+    {
+        $res = $this->_delete($where);
+        return $res;
+    }
+
     public function getOne($where = [], $field = [])
     {
         $res = $this->_select($where, $field);
@@ -60,6 +66,13 @@ class Table
         return $res;
     }
 
+    private function _delete($where = [])
+    {
+        $sql = "DELETE FROM " . $this->_table . " WHERE " . current($where);
+        $smt = $this->_execute($sql, next($where));
+        return $smt->rowCount();
+    }
+
     private function _update($where = [], $data = [])
     {
         $sql = "UPDATE " . $this->_table . " SET";
@@ -68,13 +81,15 @@ class Table
             $sql .= " {$item}=?,";
         }
         $sql = trim($sql, ",");
-        $smt = $this->_execute($sql, next($where), $data);
+        $sql .= " WHERE " . current($where);
+        $data = array_merge($data, next($where));;
+        $smt = $this->_execute($sql, $data);
         return $smt->rowCount();
     }
 
-    private function _execute($sql, $param, $data)
+    private function _execute($sql, $data)
     {
-        if ($param && is_array($param)) {
+        if ($data && is_array($data)) {
             $smt = $this->_link->prepare($sql);
             $index = 0;
             foreach ($data as $key => $item) {
